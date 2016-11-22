@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/RaceStorm.iml" filepath="$PROJECT_DIR$/RaceStorm.iml" />
-      <module fileurl="file://$PROJECT_DIR$/RaceStorm.iml" filepath="$PROJECT_DIR$/RaceStorm.iml" />
       <module fileurl="file://$PROJECT_DIR$/RaceStormApp.iml" filepath="$PROJECT_DIR$/RaceStormApp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

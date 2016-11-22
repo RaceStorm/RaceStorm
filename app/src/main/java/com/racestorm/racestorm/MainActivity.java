@@ -20,8 +20,13 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.UUID;
 
+//Ende der Imports
+
+//Anfang der Klasse
 public class MainActivity extends AppCompatActivity {
 
+
+    //Anfang der main Methode
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,12 +47,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 bluetoothGeraete();
-
             }
         });
 
 
-    }
+
+    }//Ende der main Methode
+
+
+
+
+
+
  /* Funktioniert irgendwie nicht... suche noch lösung
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -56,6 +67,28 @@ public class MainActivity extends AppCompatActivity {
     }
     */
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //-----------------------------Bluetooth-------------------------------------------------------------------------------------
+
+    //Muss den code noch anpassen und zusammenfassen
 
     //Methode bluetooth (managed die Bluetooth verbindung und ruft die weiteren methoden auf, wird aber noch verkürzt)
     public void bluetoothGeraete() {
@@ -132,7 +165,22 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //---------------------------------------------------------------
+    //--------------------------------------------Ende Bluetooth------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

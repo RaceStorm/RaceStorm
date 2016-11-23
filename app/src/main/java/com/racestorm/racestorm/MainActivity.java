@@ -57,6 +57,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnOptions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                optionen();
+            }
+        });
+
 
 
 
@@ -84,7 +91,12 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    //-----------------------------Optionen----------------------------------------------------------------------------------------------
+    public void optionen() {
+        setContentView(R.layout.optionen);
 
+    }
+    //-----------------------------Ende--------------------------------------------------------------------------------------------------
 
 
 

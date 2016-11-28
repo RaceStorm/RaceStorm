@@ -39,9 +39,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+    start();
+    }//Ende der main Methode
 
 
 
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+
+
+    //-----------------------------Start----------------------------------------------------------------------------------------------
+
+    public void start(){
+
+        setContentView(R.layout.activity_main);
         //Initialisierung der Buttons der main_activity
         Button btnStart = (Button) findViewById(R.id.btnStart);
         Button btnOptions = (Button) findViewById(R.id.btnOptions);
@@ -71,27 +86,10 @@ public class MainActivity extends AppCompatActivity {
                 about();
             }
         });
-
-
-
-    }//Ende der main Methode
-
-
-
-
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
     }
 
 
-
-
-
-
-
-
-
+    //-----------------------------Ende Start----------------------------------------------------------------------------------------------
 
 
 
@@ -109,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         btnOptionsBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               setContentView(R.layout.activity_main);
+               start();
             }
         });
 
@@ -140,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //-----------------------------Ende--------------------------------------------------------------------------------------------------
+    //-----------------------------Ende Optionen--------------------------------------------------------------------------------------------------
 
 
 
@@ -154,77 +152,93 @@ public class MainActivity extends AppCompatActivity {
 
 
     //Variablen werden definiert
-    private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
-    BluetoothAdapter btAdapter;
-    Set<BluetoothDevice> btGekoppelt;
-    BluetoothDevice btGeraet;
-    BluetoothSocket btSocket;
-    OutputStream btOutput;
-    InputStream btInput;
-    TextView btGeraete = (TextView) findViewById(R.id.btGeraete);
-
-    //Methode bluetooth (managed die Bluetooth verbindung und ruft die weiteren methoden auf, wird aber noch verkürzt)
     public void bluetoothGeraete() {
 
         setContentView(R.layout.bluetooth);
-        btAdapter = BluetoothAdapter.getDefaultAdapter();
-        btGekoppelt = btAdapter.getBondedDevices();
+        createDeviceList();
+    } //Ende bluetoothGeraete()
 
-        ArrayList<String> Liste = new ArrayList<String>();
+    public void setStatus(String string)
+    {
+        ((TextView) findViewById(R.id.btGeraete)).setText(string);
+    }
 
-        for (BluetoothDevice btGeraet : btGekoppelt) {
-            Liste.add(new String(btGeraet.getName()));
+    //---------------------------------------------------------------
+    private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+
+    BluetoothAdapter     BT_Adapter;
+    Set<BluetoothDevice> BT_PairedDevices;
+    BluetoothDevice      BT_Device;
+    BluetoothSocket      BT_Socket;
+    OutputStream         BT_OutStream;
+    InputStream          BT_InStream;
+
+    //---------------------------------------------------------------
+    class myOnItemClickListener implements AdapterView.OnItemClickListener
+    {
+        //-----------------------------------------------------------
+        @Override
+        public void onItemClick(AdapterView<?> arg0, View arg1, int pos, long id)
+        {
+            setStatus("onItemClick:"+pos);
+
+            BT_Device = (BluetoothDevice)BT_PairedDevices.toArray()[pos];
+
+            try
+            {
+                BT_Socket  = BT_Device.createRfcommSocketToServiceRecord(MY_UUID);
+                BT_Socket.connect();
+
+                BT_OutStream = BT_Socket.getOutputStream();
+                BT_InStream  = BT_Socket.getInputStream();
+
+                setStatus( "connected to "+BT_Device.getName()+" ("+BT_Device.getAddress()+" )");
+
+            }
+            catch(IOException e)
+            {
+                setStatus( "not connected" );
+            }
+        }
+    }
+
+    //---------------------------------------------------------------
+    public void createDeviceList()
+    {
+        BT_Adapter       = BluetoothAdapter.getDefaultAdapter();
+        BT_PairedDevices = BT_Adapter.getBondedDevices();
+
+        ArrayList<String> list = new ArrayList<String>();
+
+        for(BluetoothDevice BT_Device : BT_PairedDevices)
+        {
+            list.add(new String(BT_Device.getName()));
         }
 
         final ArrayAdapter<String> adapter
                 = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
-                Liste);
+                list);
 
-        ListView btListe = (ListView) findViewById(R.id.btListe);
-        btListe.setAdapter(adapter);
-        btListe.setOnItemClickListener(new myOnItemClickListener());
-    } //Ende bluetoothGeraete()
-
-
+        ListView lv = (ListView)findViewById(R.id.btListe);
+        lv.setAdapter(adapter);
+        lv.setOnItemClickListener( new myOnItemClickListener() );
+    }
     //---------------------------------------------------------------------------------------------------------------------------------------
 
-
-
-    class myOnItemClickListener implements AdapterView.OnItemClickListener {//Anfang class myOnItemClickListener
-        //-----------------------------------------------------------
-        @Override
-        public void onItemClick(AdapterView<?> arg0, View arg1, int pos, long id) { //Anfang Methode
-            btGeraete.setText("onItemClick:" + pos);
-
-            btGeraet = (BluetoothDevice) btGekoppelt.toArray()[pos];
-
-            try {
-                btSocket = btGeraet.createRfcommSocketToServiceRecord(MY_UUID);
-                btSocket.connect();
-
-                btOutput = btSocket.getOutputStream();
-                btInput = btSocket.getInputStream();
-
-                btGeraete.setText("verbunden mit " + btGeraet.getName() + " (" + btGeraet.getAddress() + " )");
-
-            } catch (IOException e) {
-                btGeraete.setText("not connected");
-            }
-        } //Ende Methode OnItemClick
-    }//ende class
-
-
-    //---------------------------------------------------------------------------------------------------------------------------------------
-    /* Alter sendebefehl
-    public void Send(View view) {
-        setStatus("send to " + btGeraet.getName());
+    /*
+    public void Send(View view)
+    {
+        setStatus("send to "+BT_Device.getName());
 
         byte[] buffer = new String("Hello World!nr").getBytes();
 
-        try {
-            btOutput.write(buffer);
-        } catch (IOException e) {
+        try
+        {
+            BT_OutStream.write(buffer);
+        }
+        catch (IOException e)
+        {
         }
     }
     */
@@ -244,12 +258,12 @@ public class MainActivity extends AppCompatActivity {
         btnBackAbout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            setContentView(R.layout.activity_main);
+            start();
             }
         });
 
     }
-    //-----------------------------Ende----------------------------------------------------------------------------------------------
+    //-----------------------------Ende About----------------------------------------------------------------------------------------------
 
 
 

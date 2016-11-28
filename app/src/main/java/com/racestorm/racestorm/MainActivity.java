@@ -65,7 +65,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
+        btnAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                about();
+            }
+        });
 
 
 
@@ -228,15 +233,23 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    //----------------------------------------About----------------------------------------------------------------------------------------------
 
 
+    public void about() {
+        setContentView(R.layout.about);
 
+        Button btnBackAbout = (Button) findViewById(R.id.btnBackAbout);
 
+        btnBackAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            setContentView(R.layout.activity_main);
+            }
+        });
 
-
-
-
-
+    }
+    //-----------------------------Ende----------------------------------------------------------------------------------------------
 
 
 

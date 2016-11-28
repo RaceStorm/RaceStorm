@@ -20,4 +20,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnSteuerungOption" />
+
+    <Button
+        android:text="Zurück"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnOptionsBack" />
 </LinearLayout>

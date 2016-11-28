@@ -95,7 +95,46 @@ public class MainActivity extends AppCompatActivity {
     public void optionen() {
         setContentView(R.layout.optionen);
 
+        Button btnSprachen = (Button) findViewById(R.id.btnSprachenOption);
+        Button btnThemen = (Button) findViewById(R.id.btnThemenOption);
+        Button btnSteuerungOption = (Button) findViewById(R.id.btnSteuerungOption);
+        Button btnOptionsBack = (Button) findViewById(R.id.btnOptionsBack);
+
+
+        btnOptionsBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               setContentView(R.layout.activity_main);
+            }
+        });
+
+
+        btnSprachen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
+        btnThemen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
+        btnSteuerungOption.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
     }
+
+
     //-----------------------------Ende--------------------------------------------------------------------------------------------------
 
 

@@ -50,6 +50,25 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    //-------------------------------Steuerung----------------------------------------------------------------------------------------
+    public void steuerung(){
+        setContentView(R.layout.steuerung);
+        //Buttons deklarieren
+        Button btnLinks = (Button) findViewById(R.id.btnLinks) ;
+        Button btnRechts = (Button) findViewById(R.id.btnRechts) ;
+        Button btnGas  = (Button) findViewById(R.id.btnGas) ;
+
+        //Links Button
+        btnLinks.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+
+                }
+        });
+
+    }
+    //-----------------------------Steuerung--Ende-------------------------------------------------------------------------------------
+
 
 
     //-----------------------------Start----------------------------------------------------------------------------------------------
@@ -71,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 bluetoothGeraete();
             }
         });
-
+        //Aktion bei klickens des Option Buttons
         btnOptions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        //Aktion bei klickens des About Buttons
         btnAbout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

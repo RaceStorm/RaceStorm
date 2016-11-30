@@ -1,29 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:weightSum="1"
+    android:gravity="bottom">
 
     <Button
+        android:id="@+id/btnSprachenOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Sprache"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnSprachenOption" />
+        android:layout_weight="0.14" />
 
     <Button
+        android:id="@+id/btnThemenOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Themen"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnThemenOption" />
+        android:layout_weight="0.14" />
 
     <Button
+        android:id="@+id/btnSteuerungOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Steuerung"
+        android:layout_weight="0.14"/>
+
+    <Space
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnSteuerungOption" />
+        android:layout_weight="0.24" />
 
     <Button
-        android:text="Zurück"
+        android:id="@+id/btnOptionsBack"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnOptionsBack" />
+        android:text="Zurück"
+        android:layout_weight="0.04" />
 </LinearLayout>

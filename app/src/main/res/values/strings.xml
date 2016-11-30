@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">RaceStorm</string>
+    <string name="Start">START</string>
+    <string name="Options">OPTIONS</string>
+    <string name="About">ABOUT</string>
+
 </resources>

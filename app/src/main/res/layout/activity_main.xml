@@ -17,21 +17,21 @@
         android:id="@+id/btnStart"
         android:layout_width="176dp"
         android:layout_height="wrap_content"
-        android:text="@string/Start"
+        android:text="Start"
         android:layout_weight="0.10" />
 
     <Button
         android:id="@+id/btnOptions"
         android:layout_width="176dp"
         android:layout_height="wrap_content"
-        android:text="@string/Options"
+        android:text="Options"
         android:layout_weight="0.10"/>
 
     <Button
         android:id="@+id/btnAbout"
         android:layout_width="176dp"
         android:layout_height="wrap_content"
-        android:text="@string/About"
+        android:text="About"
         android:layout_weight="0.10"/>
 
 

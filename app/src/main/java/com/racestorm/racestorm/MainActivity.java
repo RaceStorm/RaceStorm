@@ -3,6 +3,8 @@ package com.racestorm.racestorm;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -131,10 +133,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
+
+
         btnSprachen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                selectSprachen();
             }
         });
 
@@ -153,6 +158,22 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
+
+    }
+
+    public void selectSprachen(){
+        CharSequence sprache[] = new CharSequence[] {"Deutsch", "English"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Select Language");
+        builder.setItems(sprache, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // the user clicked on colors[which]
+            }
+        });
+        builder.show();
 
     }
 

@@ -206,6 +206,8 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.bluetooth);
         createDeviceList();
+
+
     } //Ende bluetoothGeraete()
 
     public void setStatus(String string)
@@ -273,6 +275,16 @@ public class MainActivity extends AppCompatActivity {
         ListView lv = (ListView)findViewById(R.id.btListe);
         lv.setAdapter(adapter);
         lv.setOnItemClickListener( new myOnItemClickListener() );
+
+        Button btnBtLos = (Button) findViewById(R.id.btnBtLos);
+        btnBtLos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                steuerung();
+
+            }
+        });
     }
     //---------------------------------------------------------------------------------------------------------------------------------------
 

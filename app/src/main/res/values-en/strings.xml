@@ -12,4 +12,5 @@
     <string name="SteuerungLinks">Left</string>
     <string name="SteuerungRechts">Right</string>
     <string name="SteuerungGas">Accelerate</string>
+    <string name="BluetoothStart">Lets go</string>
 </resources>

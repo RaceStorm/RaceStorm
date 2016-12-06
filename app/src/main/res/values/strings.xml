@@ -16,4 +16,6 @@
     <string name="SteuerungRechts">Rechts</string>
     <string name="SteuerungGas">Gas</string>
 
+    <string name="BluetoothStart">Los gehts</string>
+
 </resources>

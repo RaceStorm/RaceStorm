@@ -25,7 +25,7 @@
         android:id="@+id/btnOptions"
         android:layout_width="176dp"
         android:layout_height="wrap_content"
-        android:text="Options"
+        android:text="Optionen"
         android:layout_weight="0.10"/>
 
     <Button

@@ -21,6 +21,8 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.UUID;
+
+import static com.racestorm.racestorm.R.string.About;
 //Ende der Imports
 
 
@@ -171,6 +173,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // the user clicked on colors[which]
+                Button btnTestBack = (Button) findViewById(R.id.btnBackAbout);
+                if (which == 0){
+
+                }
+                else if(which == 1){
+
+                }
+
             }
         });
         builder.show();

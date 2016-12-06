@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">RaceStorm</string>
-    <string name="About"></string>
+    <string name="About">About</string>
+    <string name="AboutBack">Zurück</string>
+    <string name="OptionenBack">Zurück</string>
+    <string name="OptionenSprache">Sprache</string>
+    <string name="OptionenSteuerung">Steuerung</string>
+    <string name="OptionenThemen">Themen</string>
+    <string name="Options">Optionen</string>
+    <string name="Start">Start</string>
+    <string name="SteuerungGas">Gas</string>
+    <string name="SteuerungLinks">Links</string>
+    <string name="SteuerungRechts">Rechts</string>
 </resources>

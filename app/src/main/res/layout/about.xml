@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="bottom|center"
@@ -8,10 +9,17 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:weightSum="1">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/racestorm"
+        android:id="@+id/imageView"
+        android:layout_weight="0.2" />
+
     <Button
         android:text="Zurück"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/btnBackAbout"
-        android:layout_weight="0.04" />
+        android:layout_weight="0.86" />
 </LinearLayout>

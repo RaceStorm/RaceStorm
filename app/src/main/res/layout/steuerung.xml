@@ -5,19 +5,19 @@
     android:weightSum="1">
 
     <Button
-        android:text="Links"
+        android:text="@string/SteuerungLinks"
         android:layout_width="wrap_content"
         android:layout_height="90dp"
         android:id="@+id/btnLinks" />
 
     <Button
-        android:text="Rechts"
+        android:text="@string/SteuerungRechts"
         android:layout_width="wrap_content"
         android:layout_height="90dp"
         android:id="@+id/btnRechts" />
 
     <Button
-        android:text="Gas"
+        android:text="@string/SteuerungGas"
         android:layout_width="wrap_content"
         android:layout_height="90dp"
         android:id="@+id/btnGas" />

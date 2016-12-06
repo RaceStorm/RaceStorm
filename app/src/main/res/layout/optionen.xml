@@ -13,21 +13,21 @@
         android:id="@+id/btnSprachenOption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sprache"
+        android:text="@string/OptionenSprache"
         android:layout_weight="0.14" />
 
     <Button
         android:id="@+id/btnThemenOption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Themen"
+        android:text="@string/OptionenThemen"
         android:layout_weight="0.14" />
 
     <Button
         android:id="@+id/btnSteuerungOption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Steuerung"
+        android:text="@string/OptionenSteuerung"
         android:layout_weight="0.14"/>
 
     <Space
@@ -39,6 +39,6 @@
         android:id="@+id/btnOptionsBack"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Zurück"
+        android:text="@string/OptionenBack"
         android:layout_weight="0.04" />
 </LinearLayout>

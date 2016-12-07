@@ -5,9 +5,8 @@
     <string name="Options">Optionen</string>
     <string name="About">About</string>
 
-    <string name="AboutBack">Zurück</string>
+    <string name="Back">Zurück</string>
 
-    <string name="OptionenBack">Zurück</string>
     <string name="OptionenSprache">Sprache</string>
     <string name="OptionenThemen">Themen</string>
     <string name="OptionenSteuerung">Steuerung</string>
@@ -17,5 +16,19 @@
     <string name="SteuerungGas">Gas</string>
 
     <string name="BluetoothStart">Los gehts</string>
+
+    <string name="AboutText1">
+        Hallo Nutzer!</string>
+
+     <string name="AboutText2">
+        Mit dieser App hast du einen Kontroller für LEGO MINDSTORMS NXT Roboter gewählt.</string>
+
+    <string name="AboutText3">
+        Verantwortliche:
+        Lars
+        Benedikt
+        Ersin
+        Tatjana
+    </string>
 
 </resources>

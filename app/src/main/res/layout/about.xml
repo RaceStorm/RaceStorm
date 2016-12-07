@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,16 +11,41 @@
     android:weightSum="1">
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="170dp"
         app:srcCompat="@drawable/racestorm"
         android:id="@+id/imageView"
-        android:layout_weight="0.2" />
+        android:layout_weight="0.19" />
+
+    <TextView
+        android:text="@string/AboutText1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_size"
+        android:textAlignment="center"
+        android:id="@+id/textView1"
+        android:layout_weight="0.02" />
+
+    <TextView
+        android:text="@string/AboutText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_size"
+        android:id="@+id/textView2"
+        android:layout_weight="0.31" />
+
+    <TextView
+        android:text="@string/AboutText3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_size"
+        android:id="@+id/textView3"
+        android:layout_weight="0.32" />
 
     <Button
-        android:text="@string/AboutBack"
+        android:text="@string/Back"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="47dp"
         android:id="@+id/btnBackAbout"
-        android:layout_weight="0.86" />
+        android:layout_weight="0.08" />
 </LinearLayout>

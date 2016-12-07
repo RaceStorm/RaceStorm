@@ -2,8 +2,7 @@
 <resources>
     <string name="app_name">RaceStorm</string>
     <string name="About">About</string>
-    <string name="AboutBack">Zurück</string>
-    <string name="OptionenBack">Zurück</string>
+    <string name="Back">Zurück</string>
     <string name="OptionenSprache">Sprache</string>
     <string name="OptionenSteuerung">Steuerung</string>
     <string name="OptionenThemen">Themen</string>

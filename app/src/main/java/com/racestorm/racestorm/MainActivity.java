@@ -171,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void selectSprachen(){
-        CharSequence sprache[] = new CharSequence[] {"Deutsch", "English"};
+        CharSequence sprache[] = new CharSequence[] {"Deutsch", "English", "Russisch"};
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Select Language");
         builder.setItems(sprache, new DialogInterface.OnClickListener() {
@@ -184,6 +184,9 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if(which == 1){
                     setLocale("en");
+                }
+                else if(which == 2){
+                    setLocale("ru");
                 }
 
             }

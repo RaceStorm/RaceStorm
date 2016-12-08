@@ -300,8 +300,13 @@ public class MainActivity extends AppCompatActivity {
         btnBtLos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                steuerung();
+                if ((((TextView) findViewById(R.id.btGeraete)).getText()).equals("not connected")){
+                }
+                else if((((TextView) findViewById(R.id.btGeraete)).getText()).equals("Gekoppelte Bluetooth Geräte :")){
+                }
+                else {
+                    steuerung();
+                }
 
             }
         });

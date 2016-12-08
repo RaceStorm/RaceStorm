@@ -302,6 +302,16 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        Button btnBtBack = (Button) findViewById(R.id.btnBtBack);
+        btnBtBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                start();
+
+            }
+        });
     }
     //---------------------------------------------------------------------------------------------------------------------------------------
 

@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
         builder.setItems(sprache, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // the user clicked on colors[which]
+
                 Button btnTestBack = (Button) findViewById(R.id.btnBackAbout);
                 if (which == 0){
                     setLocale("de");

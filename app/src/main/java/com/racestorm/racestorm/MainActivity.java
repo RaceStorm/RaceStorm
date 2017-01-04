@@ -7,11 +7,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.Menu;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,10 +22,16 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.appindexing.Thing;
+import com.google.android.gms.common.api.GoogleApiClient;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.Set;
 import java.util.UUID;
@@ -36,11 +45,15 @@ import static com.racestorm.racestorm.R.string.About;
 //Befehl den du evtl nutzen kannst bzw umschreiben und dann in deinem code aufrufen kannst
 
 
-
-
 //Anfang der Klasse
 public class MainActivity extends AppCompatActivity {
 
+
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
 
     //Anfang der main Methode
     @Override
@@ -48,10 +61,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-    start();
+        start();
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }//Ende der main Methode
-
-
 
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -60,36 +74,94 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //-------------------------------Steuerung----------------------------------------------------------------------------------------
-    public void steuerung(){
+    public void steuerung() {
         setContentView(R.layout.steuerung);
         //Buttons deklarieren
-        Button btnLinks = (Button) findViewById(R.id.btnLinks) ;
-        Button btnRechts = (Button) findViewById(R.id.btnRechts) ;
-        Button btnGas  = (Button) findViewById(R.id.btnGas) ;
+        Button btnLinks = (Button) findViewById(R.id.btnLinks);
+        Button btnRechts = (Button) findViewById(R.id.btnRechts);
+        Button btnGas = (Button) findViewById(R.id.btnGas);
+        Button btnBack = (Button) findViewById(R.id.btnBack);
 
-        //Links Button
-        btnLinks.setOnClickListener(new View.OnClickListener(){
+        //Rechts Button
+        btnRechts.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction()== MotionEvent.ACTION_DOWN) {
+                    SendLeft();
+                    return true;
 
                 }
+                else if(event.getAction()== MotionEvent.ACTION_UP){
+                    SendNothing();
+                    return true;
+                }
+                return false;
+            }
         });
 
+        //Links Button
+        btnLinks.setOnTouchListener(new View.OnTouchListener() {
+           @Override
+            public boolean onTouch(View v, MotionEvent event) {
+               if (event.getAction()== MotionEvent.ACTION_DOWN) {
+                   SendRight();
+                   return true;
+
+               }
+               else if(event.getAction()== MotionEvent.ACTION_UP){
+                   SendNothing();
+                   return true;
+               }
+               return false;
+           }
+        });
+
+        //Gas Button
+        btnGas.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction()== MotionEvent.ACTION_DOWN) {
+                    SendGas();
+                    return true;
+
+                }
+                else if(event.getAction()== MotionEvent.ACTION_UP){
+                    SendNothing();
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        //Rückwärts Button
+        btnBack.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction()== MotionEvent.ACTION_DOWN) {
+                    SendBack();
+                    return true;
+
+                }
+                else if(event.getAction()== MotionEvent.ACTION_UP){
+                    SendNothing();
+                    return true;
+                }
+                return false;
+            }
+        });
     }
     //-----------------------------Steuerung--Ende-------------------------------------------------------------------------------------
 
 
-
     //-----------------------------Start----------------------------------------------------------------------------------------------
 
-    public void start(){
+    public void start() {
 
         setContentView(R.layout.activity_main);
         //Initialisierung der Buttons der main_activity
         Button btnStart = (Button) findViewById(R.id.btnStart);
         Button btnOptions = (Button) findViewById(R.id.btnOptions);
         Button btnAbout = (Button) findViewById(R.id.btnAbout);
-
 
 
         //Aktion bei klickens des Start Buttons
@@ -120,8 +192,6 @@ public class MainActivity extends AppCompatActivity {
     //-----------------------------Ende Start----------------------------------------------------------------------------------------------
 
 
-
-
     //-----------------------------Optionen----------------------------------------------------------------------------------------------
     public void optionen() {
         setContentView(R.layout.optionen);
@@ -135,12 +205,9 @@ public class MainActivity extends AppCompatActivity {
         btnOptionsBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               start();
+                start();
             }
         });
-
-
-
 
 
         btnSprachen.setOnClickListener(new View.OnClickListener() {
@@ -167,11 +234,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
     }
 
-    public void selectSprachen(){
-        CharSequence sprache[] = new CharSequence[] {"Deutsch", "English", "Russisch"};
+    public void selectSprachen() {
+        CharSequence sprache[] = new CharSequence[]{"Deutsch", "English", "Russisch"};
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Select Language");
         builder.setItems(sprache, new DialogInterface.OnClickListener() {
@@ -179,13 +245,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
 
                 Button btnTestBack = (Button) findViewById(R.id.btnBackAbout);
-                if (which == 0){
+                if (which == 0) {
                     setLocale("de");
-                }
-                else if(which == 1){
+                } else if (which == 1) {
                     setLocale("en");
-                }
-                else if(which == 2){
+                } else if (which == 2) {
                     setLocale("ru");
                 }
 
@@ -211,11 +275,6 @@ public class MainActivity extends AppCompatActivity {
     //-----------------------------Ende Optionen--------------------------------------------------------------------------------------------------
 
 
-
-
-
-
-
     //-----------------------------Bluetooth----------------------------------------------------------------------------------------------
 
     //Muss den code noch anpassen und zusammenfassen
@@ -230,60 +289,88 @@ public class MainActivity extends AppCompatActivity {
 
     } //Ende bluetoothGeraete()
 
-    public void setStatus(String string)
-    {
+    public void setStatus(String string) {
         ((TextView) findViewById(R.id.btGeraete)).setText(string);
     }
 
     //---------------------------------------------------------------
     private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
-    BluetoothAdapter     BT_Adapter;
+    BluetoothAdapter BT_Adapter;
     Set<BluetoothDevice> BT_PairedDevices;
-    BluetoothDevice      BT_Device;
-    BluetoothSocket      BT_Socket;
-    OutputStream         BT_OutStream;
-    InputStream          BT_InStream;
+    BluetoothDevice BT_Device;
+    BluetoothSocket BT_Socket;
+    OutputStream BT_OutStream;
+    InputStream BT_InStream;
+
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    public Action getIndexApiAction() {
+        Thing object = new Thing.Builder()
+                .setName("Main Page") // TODO: Define a title for the content shown.
+                // TODO: Make sure this auto-generated URL is correct.
+                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
+                .build();
+        return new Action.Builder(Action.TYPE_VIEW)
+                .setObject(object)
+                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
+                .build();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client.connect();
+        AppIndex.AppIndexApi.start(client, getIndexApiAction());
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        AppIndex.AppIndexApi.end(client, getIndexApiAction());
+        client.disconnect();
+    }
 
     //---------------------------------------------------------------
-    class myOnItemClickListener implements AdapterView.OnItemClickListener
-    {
+    class myOnItemClickListener implements AdapterView.OnItemClickListener {
         //-----------------------------------------------------------
         @Override
-        public void onItemClick(AdapterView<?> arg0, View arg1, int pos, long id)
-        {
-            setStatus("onItemClick:"+pos);
+        public void onItemClick(AdapterView<?> arg0, View arg1, int pos, long id) {
+            setStatus("onItemClick:" + pos);
 
-            BT_Device = (BluetoothDevice)BT_PairedDevices.toArray()[pos];
+            BT_Device = (BluetoothDevice) BT_PairedDevices.toArray()[pos];
 
-            try
-            {
-                BT_Socket  = BT_Device.createRfcommSocketToServiceRecord(MY_UUID);
+            try {
+                BT_Socket = BT_Device.createRfcommSocketToServiceRecord(MY_UUID);
                 BT_Socket.connect();
 
                 BT_OutStream = BT_Socket.getOutputStream();
-                BT_InStream  = BT_Socket.getInputStream();
+                BT_InStream = BT_Socket.getInputStream();
 
-                setStatus( "connected to "+BT_Device.getName()+" ("+BT_Device.getAddress()+" )");
+                setStatus("connected to " + BT_Device.getName() + " (" + BT_Device.getAddress() + " )");
 
-            }
-            catch(IOException e)
-            {
-                setStatus( "not connected" );
+            } catch (IOException e) {
+                setStatus("not connected");
             }
         }
     }
 
     //---------------------------------------------------------------
-    public void createDeviceList()
-    {
-        BT_Adapter       = BluetoothAdapter.getDefaultAdapter();
+    public void createDeviceList() {
+        BT_Adapter = BluetoothAdapter.getDefaultAdapter();
         BT_PairedDevices = BT_Adapter.getBondedDevices();
 
         ArrayList<String> list = new ArrayList<String>();
 
-        for(BluetoothDevice BT_Device : BT_PairedDevices)
-        {
+        for (BluetoothDevice BT_Device : BT_PairedDevices) {
             list.add(new String(BT_Device.getName()));
         }
 
@@ -292,19 +379,17 @@ public class MainActivity extends AppCompatActivity {
                 android.R.layout.simple_list_item_1,
                 list);
 
-        ListView lv = (ListView)findViewById(R.id.btListe);
+        ListView lv = (ListView) findViewById(R.id.btListe);
         lv.setAdapter(adapter);
-        lv.setOnItemClickListener( new myOnItemClickListener() );
+        lv.setOnItemClickListener(new myOnItemClickListener());
 
         Button btnBtLos = (Button) findViewById(R.id.btnBtLos);
         btnBtLos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ((((TextView) findViewById(R.id.btGeraete)).getText()).equals("not connected")){
-                }
-                else if((((TextView) findViewById(R.id.btGeraete)).getText()).equals("Gekoppelte Bluetooth Geräte :")){
-                }
-                else {
+                if ((((TextView) findViewById(R.id.btGeraete)).getText()).equals("not connected")) {
+                } else if ((((TextView) findViewById(R.id.btGeraete)).getText()).equals("Gekoppelte Bluetooth Geräte :")) {
+                } else {
                     steuerung();
                 }
 
@@ -324,24 +409,68 @@ public class MainActivity extends AppCompatActivity {
     //---------------------------------------------------------------------------------------------------------------------------------------
 
     /*
-    public void Send(View view)
-    {
-        setStatus("send to "+BT_Device.getName());
+     *   Byte 0-1: Command length LSB first.
+     *   Byte 2: Command type- direct command. For direct command with response message use 0x00, otherwise, for direct command without the reply message, use 0x80.
+     *   Byte 3: Command- set motor output state.
+     *   Byte 4: Motor output port. See explanation for motor output port below.
+     *   Byte 5: Motor power set point. See explanation for motor power set point below.
+     *   Byte 6: Motor mode byte (bit field). See explanation for motor byte below.
+     *   Byte 7: Regulation mode. It is valid only when the motor mode is regulated, otherwise use 0x00 value. See explanation for regulation mode below.
+     *   Byte 8: Turn ratio. It is valid only when using a motors synchronization regulation mode, otherwise use 0x00 value. See explanation for a turn ratio below.
+     *   Byte 9: Run state. See explanation for Run state below.
+     *   Byte 10-13: Tacho limit LSB first. Valid only when using a ramp-up or ramp-down as a Run stae, otherwise use 0x00 value. See explanation for tacho limit below.
+     */
+    public void SendLeft() {
+        byte[] buffer2 = new byte[]{0x0C, 0x00, 0x00, 0x04, 0x02, 0x32, 0x05, 0x01, 0x32, 0x20, 0x00, 0x00, 0x00, 0x00};
+        try {
+            BT_OutStream.write(buffer2);
 
-        byte[] buffer = new String("Hello World!nr").getBytes();
-
-        try
-        {
-            BT_OutStream.write(buffer);
+        } catch (IOException e) {
+            setStatus("Error");
         }
-        catch (IOException e)
-        {
+
+    }
+
+    public void SendNothing(){
+        byte[] buffer3 = new byte[]{0x0C, 0x00, 0x00, 0x04,(byte)0xFF, 0x00, 0x05, 0x01, 0x32, 0x20, 0x00, 0x00, 0x00, 0x00};
+        try {
+            BT_OutStream.write(buffer3);
+
+        } catch (IOException e) {
+            setStatus("Error");
         }
     }
-    */
+
+    public void SendRight() {
+        byte[] buffer4 = new byte[]{0x0C, 0x00, 0x00, 0x04, 0x01, 0x32, 0x05, 0x01, 0x32, 0x20, 0x00, 0x00, 0x00, 0x00};
+        try {
+            BT_OutStream.write(buffer4);
+
+        } catch (IOException e) {
+            setStatus("Error");
+        }
+    }
+
+    public void SendGas() {
+        byte[] buffer5 = new byte[]{0x0C, 0x00, 0x00, 0x04, (byte) 0xFF, 0x32, 0x05, 0x01, 0x32, 0x20, 0x00, 0x00, 0x00, 0x00};
+        try {
+            BT_OutStream.write(buffer5);
+
+        } catch (IOException e) {
+            setStatus("Error");
+        }
+    }
+    public void SendBack() {
+        byte[] buffer6 = new byte[]{0x0C, 0x00, 0x00, 0x04, (byte)0xFF,(byte)0xCE, 0x05, 0x01, 0x32, 0x20, 0x00, 0x00, 0x00, 0x00};
+        try {
+            BT_OutStream.write(buffer6);
+
+        } catch (IOException e) {
+            setStatus("Error");
+        }
+    }
+
     //--------------------------------------------Ende Bluetooth------------------------------------------------------------------------------
-
-
 
 
     //----------------------------------------About----------------------------------------------------------------------------------------------
@@ -355,15 +484,12 @@ public class MainActivity extends AppCompatActivity {
         btnBackAbout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            start();
+                start();
             }
         });
 
     }
     //-----------------------------Ende About----------------------------------------------------------------------------------------------
-
-
-
 
 
 }

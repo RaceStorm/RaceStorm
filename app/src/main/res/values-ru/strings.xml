@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">RaceStorm</string>
-    <string name="About">о</string>
+    <string name="About">о нас</string>
     <string name="Back">назад</string>
-    <string name="BluetoothStart">Вперед</string>
+    <string name="BluetoothStart">вперед</string>
     <string name="OptionenSprache">язык</string>
     <string name="OptionenSteuerung">контроль</string>
     <string name="OptionenThemen">тема</string>
     <string name="Options">опции</string>
     <string name="Start">старт</string>
     <string name="SteuerungGas">ускорять</string>
-    <string name="SteuerungLinks">левый</string>
-    <string name="SteuerungRechts">право</string>
+    <string name="SteuerungLinks">на лево</string>
+    <string name="SteuerungRechts">на право</string>
 </resources>

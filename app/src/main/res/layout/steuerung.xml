@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
@@ -10,24 +10,40 @@
         android:text="@string/SteuerungLinks"
         android:layout_width="wrap_content"
         android:layout_height="90dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="1dp"
         android:id="@+id/btnLinks" />
 
     <Button
         android:text="@string/SteuerungRechts"
         android:layout_width="wrap_content"
         android:layout_height="90dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="90dp"
         android:id="@+id/btnRechts" />
-
-    <Button
-        android:text="@string/SteuerungGas"
-        android:layout_width="wrap_content"
-        android:layout_height="90dp"
-        android:id="@+id/btnGas" />
 
     <Button
         android:text="Rückwärts"
         android:layout_width="wrap_content"
         android:layout_height="90dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="90dp"
         android:id="@+id/btnBack"/>
 
-</LinearLayout>
+    <Button
+        android:text="Gas"
+        android:layout_width="wrap_content"
+        android:layout_height="90dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="1dp"
+        android:id="@+id/btnGas" />
+
+</RelativeLayout>

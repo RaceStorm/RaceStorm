@@ -12,4 +12,7 @@
     <string name="SteuerungLinks">Links</string>
     <string name="SteuerungRechts">Rechts</string>
     <string name="BluetoothStart">Los gehts</string>
+    <string name="AboutText1">Hallo Nutzer!</string>
+    <string name="AboutText2">Mit dieser App kannst du einen LEGO MINDSTORMS NXT Roboter kontrollieren.</string>
+    <string name="AboutText3">Entwickler:         Lars,         Benedikt,         Ersin,         Tatjana</string>
 </resources>

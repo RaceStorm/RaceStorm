@@ -12,4 +12,7 @@
     <string name="SteuerungGas">ускорять</string>
     <string name="SteuerungLinks">на лево</string>
     <string name="SteuerungRechts">на право</string>
+    <string name="AboutText1">Привет пользователь!</string>
+    <string name="AboutText2">С помощью этого приложения вы можете управлять роботом LEGO MindStorm NXT.</string>
+    <string name="AboutText3">\"разработчик:   Lars,   Benedikt,   Ersin,   Tatjana\"</string>
 </resources>

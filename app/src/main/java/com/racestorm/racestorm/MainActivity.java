@@ -36,7 +36,9 @@ import java.util.Locale;
 import java.util.Set;
 import java.util.UUID;
 
+import static com.racestorm.racestorm.R.layout.optionen;
 import static com.racestorm.racestorm.R.string.About;
+import static java.util.logging.Logger.global;
 //Ende der Imports
 
 
@@ -48,6 +50,7 @@ import static com.racestorm.racestorm.R.string.About;
 //Anfang der Klasse
 public class MainActivity extends AppCompatActivity {
 
+    static int theme = 4;
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -59,6 +62,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(theme == 0) {
+            setTheme(android.R.style.Theme_Holo_Light);
+
+        } else if(theme == 1) {
+            setTheme(android.R.style.Theme_Holo);
+        }
+
         setContentView(R.layout.activity_main);
 
         start();
@@ -196,6 +206,7 @@ public class MainActivity extends AppCompatActivity {
     public void optionen() {
         setContentView(R.layout.optionen);
 
+
         Button btnSprachen = (Button) findViewById(R.id.btnSprachenOption);
         Button btnThemen = (Button) findViewById(R.id.btnThemenOption);
         Button btnSteuerungOption = (Button) findViewById(R.id.btnSteuerungOption);
@@ -221,7 +232,7 @@ public class MainActivity extends AppCompatActivity {
         btnThemen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                selectTheme();
             }
         });
 
@@ -244,13 +255,36 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                Button btnTestBack = (Button) findViewById(R.id.btnBackAbout);
                 if (which == 0) {
                     setLocale("de");
                 } else if (which == 1) {
                     setLocale("en");
                 } else if (which == 2) {
                     setLocale("ru");
+                }
+
+            }
+        });
+        builder.show();
+
+    }
+
+
+
+    public void selectTheme() {
+        CharSequence selectTheme[] = new CharSequence[]{"Hell", "Dunkel"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Select Theme");
+        builder.setItems(selectTheme, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                if (which == 0) {
+                    MainActivity.theme = 0;
+                    MainActivity.this.recreate();
+                } else if (which == 1) {
+                    MainActivity.theme = 1;
+                    MainActivity.this.recreate();
                 }
 
             }

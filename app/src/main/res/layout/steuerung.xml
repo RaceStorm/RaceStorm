@@ -22,7 +22,7 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:background="@drawable/beispiel_buttonsrot"
-        android:id="@+id/btn"
+        android:id="@+id/btnBack"
         android:layout_above="@+id/btnLinks"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -30,7 +30,7 @@
 
     <Button
         android:text="@string/SteuerungGas"
-        android:id="@+id/imageButton1"
+        android:id="@+id/btnGas"
         android:layout_width="200dp"
         android:layout_height="250dp"
         android:background="@drawable/beispiel_buttonsgas"

@@ -11,7 +11,6 @@ import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MotionEvent;
@@ -31,20 +30,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Locale;
 import java.util.Set;
 import java.util.UUID;
 
-import static com.racestorm.racestorm.R.layout.optionen;
-import static com.racestorm.racestorm.R.string.About;
-import static java.util.logging.Logger.global;
 //Ende der Imports
 
-
-
-//@Benedikt schau mal ganz am ende die methode public void Send(View view) { an weil da ist der alte sende
-//Befehl den du evtl nutzen kannst bzw umschreiben und dann in deinem code aufrufen kannst
 
 
 //Anfang der Klasse

@@ -264,7 +264,7 @@ public class MainActivity extends AppCompatActivity {
             Context context = getApplicationContext();
             CharSequence text = "Hier ist wohl ein Fehler passiert" + e.getMessage();
             System.out.println("Message: " + e.getMessage());
-            int duration = Toast.LENGTH_SHORT;
+            int duration = Toast.LENGTH_LONG;
 
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
@@ -298,7 +298,7 @@ public class MainActivity extends AppCompatActivity {
             Context context = getApplicationContext();
             CharSequence text = "Hier ist wohl ein Fehler passiert" + e.getMessage();
             System.out.println("Message: " + e.getMessage());
-            int duration = Toast.LENGTH_SHORT;
+            int duration = Toast.LENGTH_LONG;
 
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();

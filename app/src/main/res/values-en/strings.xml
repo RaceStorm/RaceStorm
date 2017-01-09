@@ -14,5 +14,6 @@
     <string name="BluetoothStart">Lets go</string>
     <string name="AboutText1">Hello User!</string>
     <string name="AboutText2">With this App you can controll a LEGO MINDSTORM NXT Robot.</string>
-    <string name="AboutText3">Developer:         Lars,         Benedikt,         Ersin,         Tatjana</string>
+    <string name="AboutText3">
+        Developer: Lars, Benedikt, Ersin, Tatjana</string>
 </resources>

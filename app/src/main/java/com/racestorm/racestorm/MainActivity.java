@@ -44,6 +44,7 @@ import java.util.UUID;
 public class MainActivity extends AppCompatActivity {
 
     static int theme = 4;
+    static int test = 0;
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -242,27 +243,31 @@ public class MainActivity extends AppCompatActivity {
 
     public void selectSprachen() {
         try {
-            CharSequence sprache[] = new CharSequence[]{"Deutsch", "English", "Russisch"};
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Select Language");
-            builder.setItems(sprache, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
 
-                    if (which == 0) {
+
+
+                CharSequence sprache[] = new CharSequence[]{"Deutsch", "English", "Russisch"};
+                AlertDialog.Builder buildernew = new AlertDialog.Builder(this);
+                buildernew.setTitle("Select Language");
+
+            buildernew.setItems(sprache, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int zahl) {
+
+                    if (zahl == 0) {
                         setLocale("de");
-                    } else if (which == 1) {
+                    } else if (zahl == 1) {
                         setLocale("en");
-                    } else if (which == 2) {
+                    } else if (zahl == 2) {
                         setLocale("ru");
                     }
 
                 }
             });
-            builder.show();
+            buildernew.show();
         } catch (Exception e) {
             Context context = getApplicationContext();
-            CharSequence text = "Hier ist wohl ein Fehler passiert" + e.getMessage();
+            CharSequence text = "Hier ist wohl ein Fehler passiert  " + e.getMessage();
             System.out.println("Message: " + e.getMessage());
             int duration = Toast.LENGTH_LONG;
 
@@ -276,6 +281,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void selectTheme() {
         try{
+
         CharSequence selectTheme[] = new CharSequence[]{"Hell", "Dunkel"};
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Select Theme");
@@ -296,7 +302,7 @@ public class MainActivity extends AppCompatActivity {
         builder.show();
         } catch (Exception e) {
             Context context = getApplicationContext();
-            CharSequence text = "Hier ist wohl ein Fehler passiert" + e.getMessage();
+            CharSequence text = "Hier ist wohl ein Fehler passiert  " + e.getMessage();
             System.out.println("Message: " + e.getMessage());
             int duration = Toast.LENGTH_LONG;
 

@@ -36,12 +36,4 @@
         android:text="@string/About"
         android:layout_weight="0.10"/>
 
-    <Button
-
-        android:layout_width="176dp"
-        android:layout_height="wrap_content"
-        android:text="@string/Raus"
-        android:layout_weight="0.10"/>
-
-
 </LinearLayout>

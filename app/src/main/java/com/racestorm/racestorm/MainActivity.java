@@ -3,6 +3,7 @@ package com.racestorm.racestorm;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -20,6 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -42,6 +44,7 @@ import java.util.UUID;
 public class MainActivity extends AppCompatActivity {
 
     static int theme = 4;
+    static int test = 0;
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -239,30 +242,46 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void selectSprachen() {
-        CharSequence sprache[] = new CharSequence[]{"Deutsch", "English", "Russisch"};
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Select Language");
-        builder.setItems(sprache, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        try {
 
-                if (which == 0) {
-                    setLocale("de");
-                } else if (which == 1) {
-                    setLocale("en");
-                } else if (which == 2) {
-                    setLocale("ru");
+
+
+                CharSequence sprache[] = new CharSequence[]{"Deutsch", "English", "Russisch"};
+                AlertDialog.Builder buildernew = new AlertDialog.Builder(this);
+                buildernew.setTitle("Select Language");
+
+            buildernew.setItems(sprache, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int zahl) {
+
+                    if (zahl == 0) {
+                        setLocale("de");
+                    } else if (zahl == 1) {
+                        setLocale("en");
+                    } else if (zahl == 2) {
+                        setLocale("ru");
+                    }
+
                 }
+            });
+            buildernew.show();
+        } catch (Exception e) {
+            Context context = getApplicationContext();
+            CharSequence text = "Hier ist wohl ein Fehler passiert  " + e.getMessage();
+            System.out.println("Message: " + e.getMessage());
+            int duration = Toast.LENGTH_LONG;
 
-            }
-        });
-        builder.show();
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
 
     }
 
 
 
     public void selectTheme() {
+        try{
+
         CharSequence selectTheme[] = new CharSequence[]{"Hell", "Dunkel"};
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Select Theme");
@@ -281,6 +300,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         builder.show();
+        } catch (Exception e) {
+            Context context = getApplicationContext();
+            CharSequence text = "Hier ist wohl ein Fehler passiert  " + e.getMessage();
+            System.out.println("Message: " + e.getMessage());
+            int duration = Toast.LENGTH_LONG;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+
 
     }
 
